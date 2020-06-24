@@ -1,7 +1,9 @@
 const exe = () => {
   // eslint-disable-next-line no-console
-  console.log('[start]eat virus');
+  console.log('[start]github-kusa-change');
 
+  const kusaList = getKusaList();
+  console.log(kusaList);
   // 末端の要素のtextを置換
   // const { body } = document;
   // getChildrenAndReplace(body);
@@ -17,7 +19,37 @@ const exe = () => {
   replaceByTagName('div');
   replaceImg();
   // eslint-disable-next-line no-console
-  console.log('[end]eat virus');
+  console.log('[end]github-kusa-change');
+};
+
+const getKusaList = () => {
+  const svg = document.getElementsByClassName('js-calendar-graph-svg');
+  if (!svg || svg.length === 0) {
+    return;
+  }
+  // console.log(svg);
+  const child = svg[0].children;
+  if (!child || child.length === 0) {
+    return;
+  }
+
+  const kusaParentList = child[0].children;
+  // console.log(kusaParentList);
+  if (!kusaParentList || kusaParentList.length === 0) {
+    return;
+  }
+
+  const kusaList = [];
+  for (let i = 0; i < kusaParentList.length; i++) {
+    const kusaParent = kusaParentList[i];
+    const rects = kusaParent.children;
+    for (let j = 0; j < rects.length; j++) {
+      const rect = rects[j];
+      kusaList.push(rect);
+    }
+  }
+
+  return kusaList;
 };
 
 const replaceImg = () => {
