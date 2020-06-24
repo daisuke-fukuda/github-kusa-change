@@ -9,6 +9,12 @@ const exe = () => {
     changeKusaColor(kusaList[i]);
   }
 
+  const lenengList = getLegendList();
+  console.log(lenengList);
+  for (let i = 0; i < lenengList.length; i++) {
+    changeLengendColor(lenengList[i]);
+  }
+
   // 末端の要素のtextを置換
   // const { body } = document;
   // getChildrenAndReplace(body);
@@ -57,6 +63,14 @@ const getKusaList = () => {
   return kusaList;
 };
 
+const getLegendList = () => {
+  const ul = document.getElementsByClassName('legend');
+  if (!ul || ul.length === 0) {
+    return;
+  }
+  return ul[0].children;
+};
+
 const changeKusaColor = (kusa) => {
   // attributesのfillは昔のcolorがそのまま入っていて、
   // 新旧のcolorをmappingしたscssで色が変わっている
@@ -69,6 +83,19 @@ const changeKusaColor = (kusa) => {
   kusa.style.height = '11px';
   kusa.style.rx = '0';
   kusa.style.ry = '0';
+};
+
+const changeLengendColor = (legend) => {
+  // attributesのfillは昔のcolorがそのまま入っていて、
+  // 新旧のcolorをmappingしたscssで色が変わっている
+  // なので、styleでcolorを設定してあげればscssより優先されるので元の色に戻る
+  const color = legend.style.backgroundColor;
+  legend.style.setProperty('background-color', color, 'important');
+
+  // 丸みを帯びたデザインも打ち消し
+  legend.style.width = '11px';
+  legend.style.height = '11px';
+  legend.style.borderRadius = '0';
 };
 
 const replaceImg = () => {
