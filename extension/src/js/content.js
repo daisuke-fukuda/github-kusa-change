@@ -58,10 +58,12 @@ const getKusaList = () => {
 };
 
 const changeKusaColor = (kusa) => {
+  // attributesのfillは昔のcolorがそのまま入っていて、
+  // 新旧のcolorをmappingしたscssで色が変わっている
+  // なので、styleでcolorを設定してあげればscssより優先されるので元の色に戻る
   const fill = kusa.getAttribute('fill');
-  console.log(fill);
-  kusa.setAttribute('fill', 'green');
-}
+  kusa.style.fill = fill;
+};
 
 const replaceImg = () => {
   const imgs = document.getElementsByTagName('img');
