@@ -63,6 +63,12 @@ const changeKusaColor = (kusa) => {
   // なので、styleでcolorを設定してあげればscssより優先されるので元の色に戻る
   const fill = kusa.getAttribute('fill');
   kusa.style.fill = fill;
+
+  // 丸みを帯びたデザインも打ち消し
+  kusa.style.width = '11px';
+  kusa.style.height = '11px';
+  kusa.style.rx = '0';
+  kusa.style.ry = '0';
 };
 
 const replaceImg = () => {
