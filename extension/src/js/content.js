@@ -83,7 +83,6 @@ const replaceText = (e) => {
   }
 };
 
-
 // popupからのmessage
 const addListenerFromPopup = () => {
   // eslint-disable-next-line no-unused-vars
@@ -101,6 +100,5 @@ const addListenerFromPopup = () => {
     }
   });
 };
-
 
 addListenerFromPopup();
