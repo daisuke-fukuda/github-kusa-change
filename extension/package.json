@@ -1,7 +1,7 @@
 {
-  "name": "virus-nyaster",
+  "name": "github-kusa-change",
   "version": "0.0.1",
-  "description": "猫がウイルスを駆逐します（ジョークソフトです）",
+  "description": "GitHubの草を草色に戻します",
   "scripts": {
     "build": "node utils/build.js",
     "start": "node utils/webserver.js",
