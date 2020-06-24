@@ -2,13 +2,18 @@
 
 ## setup
 
+
 ```shell script
+cd extension
 npm install
 ```
+
+DockerFileも用意してあるのでお好みで使ってください。
 
 ## build
 
 ```shell script
+cd extension
 npm build
 ```
 
