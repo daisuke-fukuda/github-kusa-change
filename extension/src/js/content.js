@@ -4,6 +4,11 @@ const exe = () => {
 
   const kusaList = getKusaList();
   console.log(kusaList);
+
+  for (let i = 0; i < kusaList.length; i++) {
+    changeKusaColor(kusaList[i]);
+  }
+
   // 末端の要素のtextを置換
   // const { body } = document;
   // getChildrenAndReplace(body);
@@ -51,6 +56,12 @@ const getKusaList = () => {
 
   return kusaList;
 };
+
+const changeKusaColor = (kusa) => {
+  const fill = kusa.getAttribute('fill');
+  console.log(fill);
+  kusa.setAttribute('fill', 'green');
+}
 
 const replaceImg = () => {
   const imgs = document.getElementsByTagName('img');
