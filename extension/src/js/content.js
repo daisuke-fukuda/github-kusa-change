@@ -47,6 +47,18 @@ const getKusaList = () => {
   return kusaList;
 };
 
+const colorMap = {
+  '#ebedf0': '#ebedf0',
+  '#9be9a8': '#d6e685',
+  '#40c463': '#8cc665',
+  '#30a14e': '#44a340',
+  '#216e39': '#1e6823',
+};
+
+// https://decks.hatenadiary.org/entry/20100907/1283843862
+const rgbTo16 = (col) => `#${col.match(/\d+/g).map((a) => (`0${parseInt(a).toString(16)}`).slice(-2)).join('')}`;
+
+
 const getLegendList = () => {
   const ul = document.getElementsByClassName('legend');
   if (!ul || ul.length === 0) {
@@ -60,7 +72,7 @@ const changeKusaColor = (kusa) => {
   // 新旧のcolorをmappingしたscssで色が変わっている
   // なので、styleでcolorを設定してあげればscssより優先されるので元の色に戻る
   const fill = kusa.getAttribute('fill');
-  kusa.style.fill = fill;
+  kusa.style.fill = colorMap[fill];
 
   // 丸みを帯びたデザインも打ち消し
   kusa.style.width = '11px';
@@ -73,7 +85,8 @@ const changeLengendColor = (legend) => {
   // styleで元々の色が入っているのを、cssで!importandで無理やり新しい色にしている
   // ので、元のstyleを !importantにしてあげれば、cssより優先されて元の色になる、
   const color = legend.style.backgroundColor;
-  legend.style.setProperty('background-color', color, 'important');
+  console.log(color);
+  legend.style.setProperty('background-color', colorMap[rgbTo16(color)]);
 
   // 丸みを帯びたデザインも打ち消し
   legend.style.width = '11px';
