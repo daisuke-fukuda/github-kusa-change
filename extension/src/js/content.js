@@ -49,10 +49,10 @@ const getKusaList = () => {
 
 const colorMap = {
   '#ebedf0': '#ebedf0',
-  '#9be9a8': '#d6e685',
-  '#40c463': '#8cc665',
-  '#30a14e': '#44a340',
-  '#216e39': '#1e6823',
+  '#9be9a8': '#cbe295',
+  '#40c463': '#89c578',
+  '#30a14e': '#439647',
+  '#216e39': '#2b5e2d',
 };
 
 // https://decks.hatenadiary.org/entry/20100907/1283843862
