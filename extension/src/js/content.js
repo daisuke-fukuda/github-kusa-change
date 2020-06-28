@@ -67,9 +67,6 @@ const getLegendList = () => {
 };
 
 const changeKusaColor = (kusa) => {
-  // attributesのfillは昔のcolorがそのまま入っていて、
-  // 新旧のcolorをmappingしたscssで色が変わっている
-  // なので、styleでcolorを設定してあげればscssより優先されるので元の色に戻る
   const fill = kusa.getAttribute('fill');
   kusa.style.fill = colorMap[fill];
 
@@ -81,10 +78,7 @@ const changeKusaColor = (kusa) => {
 };
 
 const changeLengendColor = (legend) => {
-  // styleで元々の色が入っているのを、cssで!importandで無理やり新しい色にしている
-  // ので、元のstyleを !importantにしてあげれば、cssより優先されて元の色になる、
   const color = legend.style.backgroundColor;
-  console.log(color);
   legend.style.setProperty('background-color', colorMap[rgbTo16(color)]);
 
   // 丸みを帯びたデザインも打ち消し
