@@ -1,10 +1,5 @@
 import '../css/popup.css';
 
-// https://stackoverflow.com/questions/20019958/chrome-extension-how-to-send-data-from-content-script-to-popup-html
-chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-  chrome.tabs.sendMessage(tabs[0].id, { command: 'start' });
-});
-
 (function (i, s, o, g, r, a, m) {
   i.GoogleAnalyticsObject = r; i[r] = i[r] || function () {
     (i[r].q = i[r].q || []).push(arguments);

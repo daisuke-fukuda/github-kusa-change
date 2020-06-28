@@ -58,7 +58,6 @@ const colorMap = {
 // https://decks.hatenadiary.org/entry/20100907/1283843862
 const rgbTo16 = (col) => `#${col.match(/\d+/g).map((a) => (`0${parseInt(a).toString(16)}`).slice(-2)).join('')}`;
 
-
 const getLegendList = () => {
   const ul = document.getElementsByClassName('legend');
   if (!ul || ul.length === 0) {
@@ -94,22 +93,4 @@ const changeLengendColor = (legend) => {
   legend.style.borderRadius = '0';
 };
 
-// popupからのmessage
-const addListenerFromPopup = () => {
-  // eslint-disable-next-line no-unused-vars
-  chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
-    // console.log('chrome.runtime.onMessage.addListener', msg);
-
-    switch (msg.command) {
-      // ツールバー横のアイコンクリック
-      case 'start':
-        exe();
-        break;
-      default:
-        // eslint-disable-next-line no-console
-        console.warn('invalid command');
-    }
-  });
-};
-
-addListenerFromPopup();
+window.addEventListener('load', exe, false);
