@@ -7,7 +7,7 @@ import '../css/popup.css';
   m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m);
 }(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga')); // 1.httpsをつけます
 
-ga('create', 'UA-116929671-3', 'auto');
+ga('create', 'UA-116929671-4', 'auto');
 ga('set', 'checkProtocolTask', null); // 2.httpやhttpsのprotocolチェックを回避します
 ga('send', 'pageview', '/popup.html'); // 3.GA内で表示したいように設定します
 
