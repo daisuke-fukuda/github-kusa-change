@@ -56,7 +56,11 @@ const colorMap = {
 };
 
 // https://decks.hatenadiary.org/entry/20100907/1283843862
-const rgbTo16 = (col) => `#${col.match(/\d+/g).map((a) => (`0${parseInt(a).toString(16)}`).slice(-2)).join('')}`;
+const rgbTo16 = col =>
+  `#${col
+    .match(/\d+/g)
+    .map(a => `0${parseInt(a).toString(16)}`.slice(-2))
+    .join('')}`;
 
 const getLegendList = () => {
   const ul = document.getElementsByClassName('legend');
@@ -66,7 +70,7 @@ const getLegendList = () => {
   return ul[0].children;
 };
 
-const changeKusaColor = (kusa) => {
+const changeKusaColor = kusa => {
   const fill = kusa.getAttribute('fill');
   kusa.style.fill = colorMap[fill];
 
@@ -77,7 +81,7 @@ const changeKusaColor = (kusa) => {
   kusa.style.ry = '0';
 };
 
-const changeLengendColor = (legend) => {
+const changeLengendColor = legend => {
   const color = legend.style.backgroundColor;
   legend.style.setProperty('background-color', colorMap[rgbTo16(color)]);
 

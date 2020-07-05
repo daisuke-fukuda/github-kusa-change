@@ -4,7 +4,8 @@ module.exports = {
     es6: true,
   },
   extends: [
-    'airbnb-base',
+    'eslint:recommended',
+    'plugin:prettier/recommended'
   ],
   globals: {
     chrome: 'readonly',
@@ -18,4 +19,7 @@ module.exports = {
     "no-use-before-define": "off",
     semi: [2, "always"]
   },
+  globals: {
+    ga: "readonly"
+  }
 };
