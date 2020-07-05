@@ -24,7 +24,7 @@ const options = {
     popup: path.join(__dirname, 'src', 'js', 'popup.js'),
     options: path.join(__dirname, 'src', 'js', 'options.js'),
     background: path.join(__dirname, 'src', 'js', 'background.js'),
-    content: path.join(__dirname, 'src', 'js', 'content.js'),
+    content: path.join(__dirname, 'src', 'js', 'content.ts'),
   },
   output: {
     path: path.join(__dirname, 'build'),
@@ -32,6 +32,11 @@ const options = {
   },
   module: {
     rules: [
+      {
+        test: /\.ts$/,
+        loader: 'ts-loader',
+        exclude: /node_modules/,
+      },
       {
         test: /\.css$/,
         loader: 'style-loader!css-loader',

@@ -4,20 +4,30 @@ const exe = () => {
 
   const kusaList = getKusaList();
 
+  if (!kusaList) {
+    return;
+  }
   for (let i = 0; i < kusaList.length; i++) {
     changeKusaColor(kusaList[i]);
   }
 
-  const lenengList = getLegendList();
-  for (let i = 0; i < lenengList.length; i++) {
-    changeLengendColor(lenengList[i]);
+  const legendList = getLegendList();
+
+  if (!legendList) {
+    return;
+  }
+  for (let i = 0; i < legendList.length; i++) {
+    const legend = legendList[i];
+    if (legend instanceof HTMLElement) {
+      changeLegendColor(legend);
+    }
   }
 
   // eslint-disable-next-line no-console
   console.log('[end]github-kusa-change');
 };
 
-const getKusaList = () => {
+const getKusaList = (): HTMLElement[] | undefined => {
   const svg = document.getElementsByClassName('js-calendar-graph-svg');
   if (!svg || svg.length === 0) {
     return;
@@ -34,20 +44,22 @@ const getKusaList = () => {
     return;
   }
 
-  const kusaList = [];
+  const kusaList: HTMLElement[] = [];
   for (let i = 0; i < kusaParentList.length; i++) {
     const kusaParent = kusaParentList[i];
     const rects = kusaParent.children;
     for (let j = 0; j < rects.length; j++) {
       const rect = rects[j];
-      kusaList.push(rect);
+      if (rect instanceof HTMLElement) {
+        kusaList.push(rect);
+      }
     }
   }
 
   return kusaList;
 };
 
-const colorMap = {
+const colorMap: { [index: string]: string } = {
   '#ebedf0': '#ebedf0',
   '#9be9a8': '#cbe295',
   '#40c463': '#89c578',
@@ -56,10 +68,10 @@ const colorMap = {
 };
 
 // https://decks.hatenadiary.org/entry/20100907/1283843862
-const rgbTo16 = col =>
+const rgbTo16 = (col: string) =>
   `#${col
     .match(/\d+/g)
-    .map(a => `0${parseInt(a).toString(16)}`.slice(-2))
+    ?.map(a => `0${parseInt(a).toString(16)}`.slice(-2))
     .join('')}`;
 
 const getLegendList = () => {
@@ -70,18 +82,24 @@ const getLegendList = () => {
   return ul[0].children;
 };
 
-const changeKusaColor = kusa => {
+const changeKusaColor = (kusa: HTMLElement) => {
   const fill = kusa.getAttribute('fill');
-  kusa.style.fill = colorMap[fill];
+  if (fill) {
+    kusa.style.fill = colorMap[fill];
+  }
 
   // 丸みを帯びたデザインも打ち消し
   kusa.style.width = '11px';
   kusa.style.height = '11px';
+  // eslint-disable-next-line
+  // @ts-ignore
   kusa.style.rx = '0';
+  // eslint-disable-next-line
+  // @ts-ignore
   kusa.style.ry = '0';
 };
 
-const changeLengendColor = legend => {
+const changeLegendColor = (legend: HTMLElement) => {
   const color = legend.style.backgroundColor;
   legend.style.setProperty('background-color', colorMap[rgbTo16(color)]);
 

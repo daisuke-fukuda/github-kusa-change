@@ -8,6 +8,8 @@
     "lint": "eslint src/js/*  --fix"
   },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^3.5.0",
+    "@typescript-eslint/parser": "^3.5.0",
     "clean-webpack-plugin": "3.0.0",
     "copy-webpack-plugin": "5.0.5",
     "css-loader": "3.2.0",
@@ -22,6 +24,8 @@
     "html-webpack-plugin": "3.2.0",
     "prettier": "^2.0.5",
     "style-loader": "1.0.0",
+    "ts-loader": "^7.0.5",
+    "typescript": "^3.9.6",
     "webpack": "4.41.2",
     "webpack-cli": "3.3.10",
     "webpack-dev-server": "^3.11.0",

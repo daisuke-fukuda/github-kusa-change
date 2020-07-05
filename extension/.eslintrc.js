@@ -1,11 +1,15 @@
 module.exports = {
+  parser: "@typescript-eslint/parser", // Specifies the ESLint parser
   env: {
     browser: true,
     es6: true,
   },
   extends: [
     'eslint:recommended',
-    'plugin:prettier/recommended'
+    'plugin:prettier/recommended',
+    'plugin:@typescript-eslint/eslint-recommended',
+    'plugin:@typescript-eslint/recommended',
+    'prettier/@typescript-eslint',
   ],
   globals: {
     chrome: 'readonly',
